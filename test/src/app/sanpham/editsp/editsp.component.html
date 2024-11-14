@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+        <h1>Sửa sản phẩm</h1>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="form-group">
+                <label for="name">Tên sản phẩm:</label>
+                <input type="text" formControlName="name" placeholder="Nhập tên sản phẩm" class="form-control" [(ngModel)]="sanpham.name" />
+                <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['name'].errors?.['required']">Tên sản phẩm là bắt buộc.</div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="quality">Số lượng:</label>
+                <input type="number" formControlName="quality" placeholder="Nhập số lượng" class="form-control" />
+                <div *ngIf="f['quality'].touched && f['quality'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['quality'].errors?.['required']">Số lượng là bắt buộc.</div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="image">Hình ảnh:</label>
+                <input type="text" formControlName="image" placeholder="Nhập URL hình ảnh" class="form-control" />
+                <div *ngIf="f['image'].touched && f['image'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['image'].errors?.['required']">Hình ảnh là bắt buộc.</div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="price">Giá:</label>
+                <input type="number" formControlName="price" placeholder="Nhập giá" class="form-control" />
+                <div *ngIf="f['price'].touched && f['price'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['price'].errors?.['required']">Giá là bắt buộc.</div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="description">Mô tả:</label>
+                <textarea formControlName="description" placeholder="Nhập mô tả" class="form-control"></textarea>
+                <div *ngIf="f['description'].touched && f['description'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['description'].errors?.['required']">Mô tả là bắt buộc.</div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="id_danhmuc">Danh mục:</label>
+                <select name="id_danhmuc" id="id_danhmuc" formControlName="id_danhmuc" class="form-control">
+                    <option value="" disabled selected>Chọn danh mục</option>
+                    <option *ngFor="let dm of danhmuc" [value]="dm._id">{{ dm.name }}</option>
+                </select>
+                <div *ngIf="f['id_danhmuc'].touched && f['id_danhmuc'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['id_danhmuc'].errors?.['required']">Danh mục là bắt buộc.</div>
+                </div>
+            </div>
+    
+            <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Sửa</button>
+        </form>
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
